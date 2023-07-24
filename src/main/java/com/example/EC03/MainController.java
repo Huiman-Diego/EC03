@@ -8,45 +8,55 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import java.util.List;
+import java.util.Map;
 import java.lang.String;
+import java.lang.Object;
+
+import org.springframework.jdbc.core.JdbcTemplate;
 
 
 @Controller
 @RequestMapping(path="/")
-
 public class MainController {
     
- @Autowired
-  private CategoriaRepository repository;
+    @Autowired
+    private CategoriaRepository repository;
 
-  @GetMapping(path="/")
-  public @ResponseBody String home() {
-    return "Diego Ñontol Huiman - A19104002";
-  }
+    @GetMapping(path="/")
+    public @ResponseBody String home() {
+        return "Diego Ñontol Huiman - A19104002";
+    }
 
-  @GetMapping(path="/")
-  public @ResponseBody String codigo() {
-    return "A19104002";
-  }
+    @GetMapping(path="/nombre")
+    public @ResponseBody String nombre() {
+        return "Diego Ñontol Huiman";
+    }
 
-  @PostMapping(path="/nuevo")
-  public @ResponseBody String nuevo (@RequestParam String nombre) {
-    Categoria n = new Categoria();
-    n.setNombre(nombre);
-    repository.save(n);
-    return "Categoria Guardado";
-  }
+    @GetMapping(path="/codigo")
+    public @ResponseBody String codigo() {
+        return "A19104002";
+    }
 
-  @DeleteMapping(path="/eliminar")
-  public @ResponseBody String eliminar(@RequestParam Integer id) {
-    Categoria n = new Categoria();
-    n.setId(id);
-    repository.delete(n);
-    return "Categoria Eliminada";
-  }
+    @PostMapping(path="/nuevo")
+    public @ResponseBody String nuevo (@RequestParam String nombre) {
+        Categoria n = new Categoria();
+        n.setNombre(nombre);
+        repository.save(n);
+        return "Categoria Guardado";
+    }
 
-  @GetMapping(path="/listar")
-  public @ResponseBody Iterable<Categoria> listar() {
-    return repository.findAll();
-  }
+    @DeleteMapping(path="/eliminar")
+    public @ResponseBody String eliminar(@RequestParam Integer id) {
+        Categoria n = new Categoria();
+        n.setId(id);
+        repository.delete(n);
+        return "Categoria Eliminada";
+    }
+
+    @GetMapping(path="/listar")
+
+    public @ResponseBody Iterable<Categoria> listar() {
+        return repository.findAll();
+    }
 }
