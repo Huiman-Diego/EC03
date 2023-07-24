@@ -1,1 +1,20 @@
-GET 
+@server = https://huiman-diego-glorious-space-waddle-9p44475vwqq2p74r-8080.preview.app.github.dev
+@apiserver = {{server}}/api/categoria
+###
+GET {{server}}/
+###
+GET {{server}}/nombre
+###
+GET {{server}}/codigo
+###
+GET {{apiserver}}/listar
+###
+POST {{apiserver}}/nuevo
+Content-Type: application/x-www-form-urlencoded
+
+nombre=Viento
+###
+DELETE {{apiserver}}/eliminar
+Content-Type: application/x-www-form-urlencoded
+
+id=1

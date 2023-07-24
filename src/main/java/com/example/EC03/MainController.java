@@ -38,7 +38,7 @@ public class MainController {
         return "A19104002";
     }
 
-    @PostMapping(path="/nuevo")
+    @PostMapping(path="/api/categoria/nuevo")
     public @ResponseBody String nuevo (@RequestParam String nombre) {
         Categoria n = new Categoria();
         n.setNombre(nombre);
@@ -46,7 +46,7 @@ public class MainController {
         return "Categoria Guardado";
     }
 
-    @DeleteMapping(path="/eliminar")
+    @DeleteMapping(path="/api/categoria/eliminar")
     public @ResponseBody String eliminar(@RequestParam Integer id) {
         Categoria n = new Categoria();
         n.setId(id);
@@ -54,7 +54,7 @@ public class MainController {
         return "Categoria Eliminada";
     }
 
-    @GetMapping(path="/listar")
+    @GetMapping(path="/api/categoria/listar")
 
     public @ResponseBody Iterable<Categoria> listar() {
         return repository.findAll();
